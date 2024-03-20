@@ -1,4 +1,4 @@
-import Color from "../database/model/colores";
+import Color from "../database/model/colores.js";
 
 export const listarColores = async (req, res) => {
     try {
@@ -21,7 +21,7 @@ export const borrarColor = async (req, res) => {
           .json({ mensaje: "no se pudo borrar el color, el id es incorrecto" });
       }
       await Color.findByIdAndDelete(req.params.id);
-      res.status(200).json({ mensage: "la el color fue borrado exitosamente" });
+      res.status(200).json({ mensage: "el color fue borrado exitosamente" });
     } catch (error) {
       console.log(error);
       res.status(500).json({
@@ -33,7 +33,7 @@ export const borrarColor = async (req, res) => {
 
 export const crearColor = async (req, res) => {
     try {
-      const colorNuevo = new Listas(req.body);
+      const colorNuevo = new Color(req.body);
       await colorNuevo.save();
       res.status(201).json({
         mensaje: "el color fue creada correctamente",

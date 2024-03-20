@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { borrarColor, crearColor, listarColores } from "../controller/listas.controller";
+import { borrarColor, crearColor, editarColor, listarColores } from "../controller/colores.controller.js";
 
 const Coloresrouter = Router();
 
-Coloresrouter.route('/tareas').get(listarColores).post(crearColor);
-Coloresrouter.route('/tarea/:id').delete(borrarColor);
+Coloresrouter.route('/colores').get(listarColores).post(crearColor);
+Coloresrouter.route('/color/:id').delete(borrarColor).put(editarColor);
 
 export default Coloresrouter
